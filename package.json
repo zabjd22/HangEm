@@ -1,0 +1,25 @@
+{
+  "name": "hangem",
+  "version": "0.0.1",
+  "description": "A hangman game retought.",
+  "main": "app/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zabjd22/HangEm.git"
+  },
+  "author": "Zetrax",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zabjd22/HangEm/issues"
+  },
+  "homepage": "https://github.com/zabjd22/HangEm#readme",
+  "devDependencies": {
+    "electron": "^6.0.9"
+  },
+  "dependencies": {
+    "physicsjs": "^0.7.0"
+  }
+}

@@ -1,0 +1,8 @@
+.hangset {
+    grid-area: hangset;
+}
+
+.playground {
+    grid-area: playground;
+}
+

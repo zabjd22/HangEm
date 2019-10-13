@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Righteous';
+    src: url(./assets/font/Righteous-Regular.ttf);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #fffbef;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+.container {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px auto 60px; 
+    grid-template-areas: 
+        "header"
+        "content"
+        "footer";
+}
+
+header {
+    grid-area: header;
+    display: grid;
+    place-content: center;
+
+    background: #8282ff;
+    color: white;
+}
+
+header h1 {
+    font-family: "Righteous", Helvetica, Arial;
+    letter-spacing: .4rem;
+    font-size: 48px;
+}
+
+footer {
+    grid-area: footer;
+    background: #8282ff;
+}
+

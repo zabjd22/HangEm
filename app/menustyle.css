@@ -1,0 +1,28 @@
+.menu {
+    display: flex;
+    /* background: #000; */
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.menu > * {
+    background: #a2a2f8;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    margin: 8px 0;
+    padding: 8px;
+    border: solid;
+    border-color: #8282ff;
+    border-width: 4px;
+    border-radius: 5px;
+    text-align: center; 
+}
+
+.menu > *:hover {
+    background: #9191f7;
+    border-color: #7070fa;
+    cursor: default;
+    user-select: none;
+}
