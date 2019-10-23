@@ -77,8 +77,9 @@ footer {
 
 .content .playground {
     display: grid;
-    background: #eee;
     width: 100%;
+    height: 50%;
+    margin: auto 0;
     flex-direction: column;
     align-content: start;
     justify-content: stretch;
@@ -119,6 +120,11 @@ footer {
     padding: 8px;
 }
 
+.letters {
+    margin: 0 auto;
+    align-self: center;
+}
+
 .letters .letter input {
     outline: none;
     background: inherit;
@@ -134,8 +140,8 @@ footer {
 
 .focus-letter {
     border: solid;
-    background: #8282ff;
-    border-color: #6c6cfa;
+    background: #9e9eff;
+    border-color: #8282fd;
     text-shadow: 0 0 0 #FFF;
 }
 
@@ -160,4 +166,39 @@ footer {
 .content .hangset figcaption {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.playground .missed {
+    background: #fd8a8a;
+    border: solid 2px #ff6868;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    text-align: center;
+    min-width: 160px;
+    padding: 8px 4px;
+    justify-self: center;
+    margin-top: 20px;
+    user-select: none;
+}
+
+.playground .missed .wrong-letter {
+    display: inline;
+    position: relative;
+    margin: 0 4px;
+}
+
+.playground .missed .wrong-letter::after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 3px;
+    background: #c71c1c7c;
+    bottom: 30%;
+    left: 60%;
+    transform: translate(-50%, -50%) rotate(45deg);
 }
