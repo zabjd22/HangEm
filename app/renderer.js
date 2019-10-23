@@ -12,37 +12,27 @@ const menuBtn = document.getElementById('mainmenu');
 const quitBtn = document.getElementById('quitgame');
 const letter_field = document.getElementsByClassName('letter');
 
-if (exitBtn) {
-    exitBtn.addEventListener('click', () => {
-        mainProcess.exitGame();
+if (exitBtn) exitBtn.addEventListener('click', event =>  mainProcess.exitGame())
+if (newGameBtn) newGameBtn.addEventListener('click', event => mainProcess.startGame(currentWindow) );
+if (menuBtn) menuBtn.addEventListener('click', event =>  mainProcess.mainMenu(currentWindow));
+if(quitBtn) quitBtn.addEventListener('click', event =>  mainProcess.exitGame());
+
+for (let letter of letter_field) {
+    const letterInput = letter.children[0];
+
+    letterInput.addEventListener('focus', (event) => {
+        letter.classList.remove('blur-letter');    
+        letter.classList.add('focus-letter');
     });
-}
-if (newGameBtn) {
-    newGameBtn.addEventListener('click', () => {
-        mainProcess.startGame(currentWindow);
+
+    letterInput.addEventListener('blur', (event) => {
+        letter.classList.remove('focus-letter');
+        letter.classList.add('blur-letter');
+    });
+
+    letterInput.addEventListener('keydown', (event) => {
+        if(letterInput.value.length < 1) String.fromCharCode(event.keycode);
+        else event.preventDefault();
     });
 }
 
-if (menuBtn) {
-    menuBtn.addEventListener('click', () => {
-        mainProcess.mainMenu(currentWindow);
-    });
-}
-
-if(quitBtn) {
-    quitBtn.addEventListener('click', () => {
-        mainProcess.exitGame();
-    });
-}
-
-for(var item in letter_field) {
-    item.addEventListener('keydown', (event) => {
-        if (event.keyCode == 8 || event.keyCode == 46) {
-            // letter_field.value = "";
-        } else if (letter_field.value.length < 1) {
-            console.log(String.fromCharCode(event.keyCode));
-        } else {
-            event.preventDefault();
-        }
-    });
-}

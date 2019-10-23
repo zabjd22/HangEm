@@ -10,7 +10,9 @@ body {
     background: #fffbef;
 }
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
     box-sizing: border-box;
 }
 
@@ -19,8 +21,8 @@ body {
     width: 100vw;
     height: 100vh;
     grid-template-columns: 1fr;
-    grid-template-rows: 80px auto 60px; 
-    grid-template-areas: 
+    grid-template-rows: 80px auto 60px;
+    grid-template-areas:
         "header"
         "content"
         "footer";
@@ -56,6 +58,7 @@ header .menuoptions {
     background: #7070ff;
     padding: 3px 6px;
     border-radius: 1px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .menuoptions .menuBtn:hover {
@@ -74,40 +77,87 @@ footer {
 
 .content .playground {
     display: grid;
+    background: #eee;
     width: 100%;
     flex-direction: column;
-    align-content: center;
+    align-content: start;
     justify-content: stretch;
 }
 
-.content .playground .letters {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.content .playground .letters .letter {
+.playground #check {
+    display: inline-block;
     outline: none;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 24px;
-    color: transparent;
-    cursor: default;
-    width: 26px;
-    height: 26px;
-    margin-left: 8px;
-    background: none;
-    border: hidden;
-    border-bottom: solid;
+    border: 2px solid #6c6cfa;
+    border-radius: 3px;
+    background: #8282ff;
+    color: white;
+    margin: 8px;
+    padding: 4px 8px;
+    width: 120px;
+    place-self: center;
+    font-family: Helvetica;
+    font-weight: bold;
+    letter-spacing: .06em;
+}
+
+.playground #check:hover {
+    background: #9191ff;
     border-color: #8282ff;
+}
+
+.playground #check:active {
+    background: #8a8afd;
+    border-color: #8282ff;
+}
+
+.letters .letter  {
+    border-width: 2px;
+    border-radius: 3px;
+    box-shadow: 60 0 black;
+    display: inline-block;
+    margin: 8px;
+    padding: 8px;
+}
+
+.letters .letter input {
+    outline: none;
+    background: inherit;
+    border: none;
+    font-family: Helvetica, Arial;
+    font-size: 16px;
+    color: transparent;
+    text-shadow: inherit;
+    width: 20px;
+    text-transform: uppercase;
     text-align: center;
-    text-shadow: 0 0 0 #8282ff;
 }
 
-.content .playground .letters .letter:focus {
+.focus-letter {
     border: solid;
+    background: #8282ff;
+    border-color: #6c6cfa;
+    text-shadow: 0 0 0 #FFF;
 }
 
-.content .playground .letters .letter:first-child {
-    margin-left: 0px;
+.blur-letter {
+    border: solid;
+    background: #EEEEEE;
+    border-color: #DDDDDD;
+    text-shadow: 0 0 0 #555;
 }
 
+.content .hangset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.content .hangset > * {
+    display: block;
+}
+
+.content .hangset figcaption {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
