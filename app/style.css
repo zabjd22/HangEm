@@ -27,6 +27,7 @@ body {
 }
 
 header {
+    position: relative;
     grid-area: header;
     display: grid;
     place-content: center;
@@ -39,10 +40,74 @@ header h1 {
     font-family: "Righteous", Helvetica, Arial;
     letter-spacing: .4rem;
     font-size: 48px;
+    user-select: none;
+}
+
+header .menuoptions {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    user-select: none;
+}
+
+.menuoptions .menuBtn {
+    display: inline-block;
+    background: #7070ff;
+    padding: 3px 6px;
+    border-radius: 1px;
+}
+
+.menuoptions .menuBtn:hover {
+    background: #6666fd;
 }
 
 footer {
     grid-area: footer;
     background: #8282ff;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.content .playground {
+    display: grid;
+    width: 100%;
+    flex-direction: column;
+    align-content: center;
+    justify-content: stretch;
+}
+
+.content .playground .letters {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.content .playground .letters .letter {
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    color: transparent;
+    cursor: default;
+    width: 26px;
+    height: 26px;
+    margin-left: 8px;
+    background: none;
+    border: hidden;
+    border-bottom: solid;
+    border-color: #8282ff;
+    text-align: center;
+    text-shadow: 0 0 0 #8282ff;
+}
+
+.content .playground .letters .letter:focus {
+    border: solid;
+}
+
+.content .playground .letters .letter:first-child {
+    margin-left: 0px;
 }
 

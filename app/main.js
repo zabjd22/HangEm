@@ -1,4 +1,8 @@
-const { app, BrowserWindow, remote } = require('electron');
+const {
+    app,
+    BrowserWindow,
+    remote
+} = require('electron');
 
 app.on('ready', () => {
     const main = new BrowserWindow({
@@ -6,13 +10,17 @@ app.on('ready', () => {
         height: 600,
         maximizable: false,
         resizable: false,
+        show: false,
         frame: false,
         webPreferences: {
             nodeIntegration: true
         }
     });
 
-    main.loadFile(`${__dirname}/main.html`);
+    main.on('ready-to-show', () => {
+        main.show();
+    });
+    mainMenu(main);
 });
 
 const exitGame = exports.exitGame = () => {
@@ -21,4 +29,8 @@ const exitGame = exports.exitGame = () => {
 
 const startGame = exports.startGame = (targetWindow) => {
     targetWindow.loadFile(`${__dirname}/gamepage.html`);
+}
+
+const mainMenu = exports.mainMenu = (targetWindow) => {
+    targetWindow.loadFile(`${__dirname}/main.html`);
 }
