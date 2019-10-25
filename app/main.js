@@ -2,7 +2,8 @@ const {
     app,
     BrowserWindow,
     remote,
-    dialog
+    dialog,
+    ipcMain
 } = require('electron');
 const path = require('path');
 const fs = require('fs');
@@ -42,9 +43,20 @@ const createWindow = () => {
     return window;
 };
 /* Exports */
-const exitGame = exports.exitGame = () => { app.exit(); }
-const startGame = exports.startGame = (targetWindow) => { targetWindow.loadFile(`${__dirname}/gamepage.html`); }
-const goto_mainMenu = exports.mainMenu = (targetWindow) => { targetWindow.loadFile(`${__dirname}/main.html`); }
+const exitGame = exports.exitGame = () => {
+    app.exit();
+}
+const newGame = exports.newGame = (targetWindow) => {
+    targetWindow.loadFile(`${__dirname}/gamepage.html`);
+    // targetWindow.webContents.send('pong')
+    targetWindow.webContents.on('did-finish-load', () => {
+        targetWindow.webContents.send('puzzleword', selectWordFromDatabase(word_db));
+    })
+}
+const goto_mainMenu = exports.goto_mainMenu = (targetWindow) => {
+    targetWindow.loadFile(`${__dirname}/main.html`);
+}
+/* IPC Messages */
 // END Application Actions.
 
 /* 

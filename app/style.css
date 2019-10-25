@@ -85,7 +85,7 @@ footer {
     justify-content: stretch;
 }
 
-.playground #check {
+.playground #checkbtn {
     display: inline-block;
     outline: none;
     border: 2px solid #6c6cfa;
@@ -101,12 +101,12 @@ footer {
     letter-spacing: .06em;
 }
 
-.playground #check:hover {
+.playground #checkbtn:hover {
     background: #9191ff;
     border-color: #8282ff;
 }
 
-.playground #check:active {
+.playground #checkbtn:active {
     background: #8a8afd;
     border-color: #8282ff;
 }
