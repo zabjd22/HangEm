@@ -13,7 +13,7 @@ const quitBtn = document.getElementById('quitgame');
 const letter_field = document.getElementsByClassName('letter');
 
 if (exitBtn) exitBtn.addEventListener('click', event =>  mainProcess.exitGame())
-if (newGameBtn) newGameBtn.addEventListener('click', event => mainProcess.startGame(currentWindow) );
+if (newGameBtn) newGameBtn.addEventListener('click', event => mainProcess.startGame(currentWindow));
 if (menuBtn) menuBtn.addEventListener('click', event =>  mainProcess.mainMenu(currentWindow));
 if(quitBtn) quitBtn.addEventListener('click', event =>  mainProcess.exitGame());
 
@@ -35,4 +35,8 @@ for (let letter of letter_field) {
         else event.preventDefault();
     });
 }
+
+ipcRenderer.on('ping', (event, message) => {
+    console.log(message);
+});
 

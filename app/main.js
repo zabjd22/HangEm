@@ -1,36 +1,74 @@
 const {
     app,
     BrowserWindow,
-    remote
+    remote,
+    dialog
 } = require('electron');
+const path = require('path');
+const fs = require('fs');
+
+const word_db_path = path.join(__dirname, '/assets/db/word_db.txt');
+let word_db;
+
 
 app.on('ready', () => {
-    const main = new BrowserWindow({
-        width: 800,
-        height: 600,
+    const main = createWindow();
+    goto_mainMenu(main);
+    word_db = filterDatabase(readFileToDatabase(readFileSync(word_db_path)));
+});
+
+/* 
+    Application Actions: Creating a new window,
+                         preparing new game and
+                         handeling game preference.
+ */
+const createWindow = () => {
+    const window = new BrowserWindow({
+        minWidth: 800,
+        minHeight: 600,
         maximizable: false,
-        resizable: false,
         show: false,
-        frame: false,
         webPreferences: {
             nodeIntegration: true
         }
     });
 
-    main.on('ready-to-show', () => {
-        main.show();
+    window.on('ready-to-show', () => {
+        window.show();
     });
-    mainMenu(main);
-});
 
-const exitGame = exports.exitGame = () => {
-    app.exit();
-}
+    window.on('close', () => {});
 
-const startGame = exports.startGame = (targetWindow) => {
-    targetWindow.loadFile(`${__dirname}/gamepage.html`);
-}
+    return window;
+};
+/* Exports */
+const exitGame = exports.exitGame = () => { app.exit(); }
+const startGame = exports.startGame = (targetWindow) => { targetWindow.loadFile(`${__dirname}/gamepage.html`); }
+const goto_mainMenu = exports.mainMenu = (targetWindow) => { targetWindow.loadFile(`${__dirname}/main.html`); }
+// END Application Actions.
 
-const mainMenu = exports.mainMenu = (targetWindow) => {
-    targetWindow.loadFile(`${__dirname}/main.html`);
+/* 
+    Section: Takes care of reading wordlist database,
+             filtering wordlist and
+             selecting word for new game.
+*/
+const randomSelect = (max) => Math.floor(Math.random() * Math.floor(max));
+const readFileSync = (filename) => {
+    try {
+        return fs.readFileSync(filename);
+    } catch (exception) {
+        throw exception;
+    }
 }
+const readFileToDatabase = file => file.toString().split('\n');
+const filterDatabase = (db) => {
+    let filtered = [];
+    for (const [i, word] of db.entries()) {
+        if (!/\d|-|'|\./.test(word) && word.length > 4) {
+            filtered.push(word);
+        }
+    }
+    return filtered;
+}
+const selectWordFromDatabase = db => db[randomSelect(db.length)];
+/* End Database Section */
