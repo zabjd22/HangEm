@@ -6,3 +6,21 @@
     grid-area: playground;
 }
 
+.missed #left {
+    display: inline-block;
+    color: white;
+    padding: 4px 6px;
+    border-radius: 3px;
+    background: #ff4c4c;
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    transform: translatey(-50%);
+}
+
+.playground .game-over {
+    place-self: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    color: #ff6868;
+}

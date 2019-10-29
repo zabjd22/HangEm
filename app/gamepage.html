@@ -21,6 +21,7 @@
         <header>
             <h1>Hang&#183em</h1>
             <div class="menuoptions">
+                <div class="menuBtn" id="resetgame">reset</div>
                 <div class="menuBtn" id="goto-mainmenu">Menu</div>
                 <div class="menuBtn" id="quitgame">Quit</div>
             </div>
@@ -33,25 +34,19 @@
             <div class="playground">
                 <div class="letters">
                     <div class="letter blur-letter">
-                        <input type="text" name="" id="">
+                        <input type="text" name="" id="what">
                     </div>
                 </div>
-                <button id="checkbtn">Check</button>
+                <!-- <button id="checkbtn">Check</button> -->
                 <div class="missed">
-                    <div class="wrong-letter">a</div>
-                    <div class="wrong-letter">a</div>
-                    <div class="wrong-letter">a</div>
-                    <div class="wrong-letter">a</div>
-                    <div class="wrong-letter">a</div>
-                    <div class="wrong-letter">a</div>
-                    <div class="wrong-letter">a</div>
+                    <div id="left">8</div>
                 </div>
             </div>
         </div>
         <footer></footer>
     </div>
     <script>
-        require('./renderer');
+        require('./renderer_game');
     </script>
 </body>
 </html>
